@@ -64,13 +64,13 @@ button:nth-child(3):active{
 /*~~ lista zadań ~~*/
 
 .listContainer{
-	min-width: 16rem;
+	min-width: 17rem;
 	max-height: 50rem;
 }
 
 li{
 	font-family: 'Courgette';
-	font-size: 2rem;
+	font-size: 2.2rem;
 	padding: 1rem;
 	border-radius: 0.5rem;
 	text-align: center;
