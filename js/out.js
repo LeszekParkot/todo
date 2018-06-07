@@ -9678,21 +9678,25 @@ document.addEventListener('DOMContentLoaded', function () {
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					null,
+					{ className: 'mainContainer' },
 					_react2.default.createElement(
-						'button',
-						{ onClick: this.addTask },
-						'Add'
-					),
-					_react2.default.createElement(
-						'button',
-						{ onClick: this.removeTask },
-						'Remove'
-					),
-					_react2.default.createElement(
-						'button',
-						{ onClick: this.clearTask },
-						'Clear'
+						'div',
+						{ className: 'btnsContainer' },
+						_react2.default.createElement(
+							'button',
+							{ className: 'btnAdd', onClick: this.addTask },
+							'Add'
+						),
+						_react2.default.createElement(
+							'button',
+							{ className: 'btnRemove', onClick: this.removeTask },
+							'Remove'
+						),
+						_react2.default.createElement(
+							'button',
+							{ className: 'btnClear', onClick: this.clearTask },
+							'Clear'
+						)
 					),
 					_react2.default.createElement(Container, { tasks: this.state.num })
 				);
@@ -9717,11 +9721,11 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 
 			return _ret = (_temp = (_this2 = _possibleConstructorReturn(this, (_ref = Container.__proto__ || Object.getPrototypeOf(Container)).call.apply(_ref, [this].concat(args))), _this2), _this2.list = function () {
-				return arr.map(function (val) {
+				return arr.map(function (elem, index) {
 					return _react2.default.createElement(
 						'li',
-						null,
-						val
+						{ key: index },
+						elem
 					);
 				});
 			}, _temp), _possibleConstructorReturn(_this2, _ret);
@@ -9732,7 +9736,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					null,
+					{ className: 'listContainer' },
 					_react2.default.createElement(
 						'ul',
 						null,

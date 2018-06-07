@@ -39,10 +39,12 @@ document.addEventListener('DOMContentLoaded', function(){
 
  	    render(){
  	        return (
-				  <div>
-					  <button onClick={this.addTask}>Add</button>
-					  <button onClick={this.removeTask}>Remove</button>
-					  <button onClick={this.clearTask}>Clear</button>
+				  <div className = "mainContainer">
+					  <div className = "btnsContainer">
+						  	<button className = "btnAdd" onClick={this.addTask}>Add</button>
+						 	<button className = "btnRemove" onClick={this.removeTask}>Remove</button>
+						 	<button className = "btnClear" onClick={this.clearTask}>Clear</button>
+					  </div>
 					  <Container tasks = {this.state.num}/>
 				  </div>
 			  )
@@ -54,9 +56,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
 		list = () =>{
 			return (
-				arr.map((val)=>{
+				arr.map((elem, index)=>{
 					return(
-						<li>{val}</li>
+						<li key={index}>{elem}</li>
 					)
 				})
 			)
@@ -64,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 		render(){
 			return (
-				 <div>
+				 <div className = "listContainer">
 				 	<ul>
 				 		{this.list()}
 				 	</ul>

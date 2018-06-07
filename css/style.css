@@ -1,56 +1,113 @@
+
 html{
-	background-color: grey;
-}
-.shoplist div{
-    width:500px;
-    height:50px;
-    background: #eee;
-    border: 1px solid #ccc;
-    margin:5px;
-    padding:5px;
+	background-color: #999;
+	font-size: 62.5%;
 }
 
-.shoplist div h1{
-    float:right;
-    width:440px;
-    margin-top:5px;
+.mainContainer{
+	padding-top: 5rem;
+	display: flex;
+	justify-content: center;
 }
 
-.shoplist div img{
-    width:50px;
-    height:50px;
-    float:left;
+
+/*~~ przyciski ~~*/
+
+.btnsContainer{
+	width: 14rem;
+	display: flex;
+	flex-direction: column;
+	margin-right: 5rem;
 }
 
-.chat {
-    width: 300px;
-    background: #eee;
-    border: 2px solid #ddd;
+button{
+	margin-bottom: 1rem;
+	padding: 1rem 0;
+	font-size: 2.2rem;
+	font-weight: bold;
+  	outline: none;
+  	border-radius: 0.5rem;
+	cursor: pointer;
+}
+button:hover{
+	box-shadow: 0 0 1rem rgba(255, 255, 255, .3);
 }
 
-.chat header h1 {
-    margin: 0;
-    text-align: center;
+button:nth-child(1){
+	background: linear-gradient(#addc54, #7ec31f);
+	border: 0.1rem solid #7ec31f;
+}
+button:nth-child(1):active{
+	background: linear-gradient(#7ec31f, #addc54);
 }
 
-.chat ul {
-    list-style: none;
-    padding: 0;
+button:nth-child(2){
+	background: linear-gradient(#ff9900, #e68a00);
+	border: 0.1rem solid #e68a00;
+
+}
+button:nth-child(2):active{
+	background: linear-gradient(#e68a00, #ff9900);
 }
 
-.chat ul li {
-    border: solid 1px #fff;
-    padding: 5px;
+button:nth-child(3){
+	background: linear-gradient(#f76f7f, #f03747);
+	border: 0.1rem solid #f03747;
+}
+button:nth-child(3):active{
+	background: linear-gradient(#f03747, #f76f7f);
 }
 
-.chat footer input {
-    height: 30px;
-    width: 225px;
-    padding: 0;
-    border: 0;
+
+
+
+/*~~ lista zadań ~~*/
+
+.listContainer{
+	min-width: 16rem;
+	max-height: 50rem;
 }
 
-.chat footer button {
-    height: 30px;
-    width: 75px;
+li{
+	font-family: 'Courgette';
+	font-size: 2rem;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	text-align: center;
+	border: 0.1rem solid #000;
 }
+
+li:nth-child(odd){
+	background-color: #fff;
+}
+li:nth-child(even){
+	background-color: #ccc;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*asd*/
