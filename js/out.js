@@ -9631,123 +9631,132 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-document.addEventListener('DOMContentLoaded', function () {
+/*~~~ TaskList ~~~*/
+var TaskList = function (_React$Component) {
+	_inherits(TaskList, _React$Component);
 
-	var arr = []; // przechowuje aktualną listę zadań
+	function TaskList() {
+		_classCallCheck(this, TaskList);
 
-	var App = function (_React$Component) {
-		_inherits(App, _React$Component);
+		return _possibleConstructorReturn(this, (TaskList.__proto__ || Object.getPrototypeOf(TaskList)).apply(this, arguments));
+	}
 
-		// tworzy przyciski, przekazuje dane do listy zadań
-		function App(props) {
-			_classCallCheck(this, App);
+	_createClass(TaskList, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'ul',
+				null,
+				this.props.list
+			);
+		}
+	}]);
 
-			var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+	return TaskList;
+}(_react2.default.Component);
 
-			_this.addTask = function () {
-				_this.setState({
-					num: ++_this.state.num // modyfikuje stan: zwiększa ilość zadań
-				});
-				arr.push("Task number " + _this.state.num); // dodaje zadanie do listy
-			};
+/*~~~ Btn ~~~*/
 
-			_this.removeTask = function () {
-				if (_this.state.num >= 1) {
-					_this.setState({
-						num: --_this.state.num // modyfikuje stan: zmniejsza ilość zadań
-					});
-				}
-				arr.pop(); // usuwa ostatnie zadanie z listy
-			};
 
-			_this.clearTask = function () {
-				_this.setState({ // modyfikuje stan: zmniejsza ilość zadań do 0
-					num: 0
-				});
-				arr.length = 0; // usuwa wszystkie zadania z listy
-			};
+var Btn = function (_React$Component2) {
+	_inherits(Btn, _React$Component2);
 
-			_this.state = {
-				num: 0
-			};
-			return _this;
+	function Btn() {
+		var _ref;
+
+		var _temp, _this2, _ret;
+
+		_classCallCheck(this, Btn);
+
+		for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+			args[_key] = arguments[_key];
 		}
 
-		_createClass(App, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'mainContainer' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'btnsContainer' },
-						_react2.default.createElement(
-							'button',
-							{ className: 'btnAdd', onClick: this.addTask },
-							'Add'
-						),
-						_react2.default.createElement(
-							'button',
-							{ className: 'btnRemove', onClick: this.removeTask },
-							'Remove'
-						),
-						_react2.default.createElement(
-							'button',
-							{ className: 'btnClear', onClick: this.clearTask },
-							'Clear'
-						)
-					),
-					_react2.default.createElement(Container, { tasks: this.state.num })
-				);
-			}
-		}]);
+		return _ret = (_temp = (_this2 = _possibleConstructorReturn(this, (_ref = Btn.__proto__ || Object.getPrototypeOf(Btn)).call.apply(_ref, [this].concat(args))), _this2), _this2.handleClick = function () {
+			_this2.props.onAction(_this2.props.task);
+		}, _temp), _possibleConstructorReturn(_this2, _ret);
+	}
 
-		return App;
-	}(_react2.default.Component);
+	_createClass(Btn, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'button',
+				{ onClick: this.handleClick },
+				this.props.task
+			);
+		}
+	}]);
 
-	var Container = function (_React$Component2) {
-		_inherits(Container, _React$Component2);
+	return Btn;
+}(_react2.default.Component);
 
-		function Container() {
-			var _ref;
+/*~~~ App ~~~*/
 
-			var _temp, _this2, _ret;
 
-			_classCallCheck(this, Container);
+var App = function (_React$Component3) {
+	_inherits(App, _React$Component3);
 
-			for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-				args[_key] = arguments[_key];
-			}
+	function App(props) {
+		_classCallCheck(this, App);
 
-			return _ret = (_temp = (_this2 = _possibleConstructorReturn(this, (_ref = Container.__proto__ || Object.getPrototypeOf(Container)).call.apply(_ref, [this].concat(args))), _this2), _this2.list = function () {
-				return arr.map(function (elem, index) {
-					return _react2.default.createElement(
-						'li',
-						{ key: index },
-						elem
-					);
+		var _this3 = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+		_this3.handleAction = function (action) {
+			if (action == "Add") {
+				_this3.setState({
+					list: _this3.state.list.concat("Task number " + (_this3.state.list.length + 1))
 				});
-			}, _temp), _possibleConstructorReturn(_this2, _ret);
-		} // tworzy listę zadań
+			} else if (action == "Remove") {
+				_this3.setState({
+					list: _this3.state.list.slice(0, _this3.state.list.length - 1)
+				});
+			} else {
+				_this3.setState({
+					list: []
+				});
+			}
+		};
 
-		_createClass(Container, [{
-			key: 'render',
-			value: function render() {
+		_this3.state = {
+			list: []
+		};
+		return _this3;
+	}
+
+	_createClass(App, [{
+		key: 'render',
+		value: function render() {
+			var list = this.state.list.map(function (val, index) {
 				return _react2.default.createElement(
+					'li',
+					{ key: index },
+					val
+				);
+			});
+			return _react2.default.createElement(
+				'div',
+				{ className: 'mainContainer' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'btnsContainer' },
+					_react2.default.createElement(Btn, { task: 'Add', onAction: this.handleAction, className: 'btnAdd' }),
+					_react2.default.createElement(Btn, { task: 'Remove', onAction: this.handleAction, className: 'btnRemove' }),
+					_react2.default.createElement(Btn, { task: 'Clear', onAction: this.handleAction, className: 'btnClear' })
+				),
+				_react2.default.createElement(
 					'div',
 					{ className: 'listContainer' },
-					_react2.default.createElement(
-						'ul',
-						null,
-						this.list()
-					)
-				);
-			}
-		}]);
+					_react2.default.createElement(TaskList, { list: list })
+				)
+			);
+		}
+	}]);
 
-		return Container;
-	}(_react2.default.Component);
+	return App;
+}(_react2.default.Component);
+
+document.addEventListener('DOMContentLoaded', function () {
 
 	_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
 });
